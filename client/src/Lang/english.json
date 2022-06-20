@@ -1,0 +1,28 @@
+{
+  "searchPlaceholder": "Search",
+  "type": "ltr",
+  "name": "English",
+  "submit": "Search",
+  "balochi": "Balochi",
+  "english": "English",
+  "urdu": "Urdu",
+  "romanBalochi": "Roman Balochi",
+  "balochiName": "Balochi",
+  "englishName": "English",
+  "urduName": "Urdu",
+  "romanBalochiName": "Roman Balochi",
+
+  "ctaBtnTextPrimary": "Search Words",
+  "ctaBtnTextSecondary": "Add Wrods",
+  "heroTitle": "A helpful and easy to use Balochi dictionary",
+  "heroSub": "The dictionary is not maintained by any autharity. So it may be messing some words. If a word not found please help us by adding the word.",
+  "languages": ["Balochi", "English", "Urdu", "Roman Balochi"],
+  "addWordForm": "Add",
+  "clearWordForm": "Clear",
+  "wordAdderName": "Name",
+  "wordAdderEmail": "Email",
+  "no": "Empty",
+  "howToAddWord": "In order to add the word. You must provide atleast one word in any language.",
+  "wantToAddWord": "",
+  "dontWatToAddWord": ""
+}
