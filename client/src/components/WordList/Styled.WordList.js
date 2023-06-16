@@ -64,13 +64,25 @@ export const StyledLabel = styled.p`
 `;
 
 export const Btn = styled.img`
-  margin-top: 15px;
   cursor: pointer;
   // border-radius: 50px;
   // box-shadow: 0px 0px 10px 5px #c4c4c4;
   // display: flex;
   // align-items: center;
   // justify-content: center;
+`;
+
+export const BtnCon = styled.div`
+  margin-top: 10px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  &:hover {
+    box-shadow: 0px 0px 10px 5px #c4c4c4;
+  }
 `;
 
 export const StyledBtnContainer = styled.div`

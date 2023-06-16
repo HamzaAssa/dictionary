@@ -9,8 +9,16 @@ async function query(sql, params) {
       database: process.env.DB_NAME,
     })
     .catch((err) => console.log(err));
-  const [results] = await connection.execute(sql, params);
-  return results;
+
+  try {
+    const [results] = await connection.execute(sql, params);
+    return results;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  } finally {
+    connection.end(); // Close the connection regardless of success or failure
+  }
 }
 
 module.exports = {

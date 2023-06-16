@@ -9,6 +9,7 @@ import {
   StyledWordCon,
   StyledLabel,
   Btn,
+  BtnCon,
   StyledBtnContainer,
   StyledMessage,
 } from "../WordList/Styled.WordList";
@@ -351,7 +352,7 @@ const Addword = () => {
         </div>
         {/* Buttons */}
         <StyledBtnContainer>
-          <Btn
+          <BtnCon
             onClick={() => {
               setWord({
                 balochi_word: "",
@@ -375,14 +376,21 @@ const Addword = () => {
                 roman_balochi_defination: "",
               });
             }}
-            src={deleteImg}
-          ></Btn>
-
-          <Btn onClick={() => navigate("/")} src={backImg}></Btn>
-
-          <Btn
-            color="green"
+          >
+            <Btn src={deleteImg}></Btn>
+          </BtnCon>
+          <BtnCon onClick={() => navigate("/")}>
+            <Btn src={backImg}></Btn>
+          </BtnCon>
+          <BtnCon
             onClick={async () => {
+              if (shouldShow === "Word") {
+                setShouldShow("Example");
+                return;
+              } else if (shouldShow === "Example") {
+                setShouldShow("Defination");
+                return;
+              }
               setMessage("");
               if (
                 word.balochi_word.trim().length === 0 &&
@@ -392,7 +400,7 @@ const Addword = () => {
                 word.roman_balochi_word.trim().length === 0
               ) {
                 setMessage(
-                  "You must provide one word in any given language..."
+                  "You must provide one word in any given language... \n Don't need to provide example or defination"
                 );
               } else {
                 const result = await addWordToDB({
@@ -443,10 +451,10 @@ const Addword = () => {
                   });
                 }
               }
-              // navigate("/author/unverifiedwords");
             }}
-            src={saveImg}
-          ></Btn>
+          >
+            <Btn color="green" src={saveImg}></Btn>
+          </BtnCon>
         </StyledBtnContainer>
         <StyledMessage>{message}</StyledMessage>
       </StyledContainer>

@@ -9,6 +9,7 @@ import {
   StyledWordCon,
   StyledLabel,
   Btn,
+  BtnCon,
   StyledBtnContainer,
   StyledMessage,
 } from "../WordList/Styled.WordList";
@@ -301,8 +302,7 @@ const VerifyWord = () => {
 
         {/* Buttons */}
         <StyledBtnContainer>
-          <Btn
-            color="red"
+          <BtnCon
             onClick={async () => {
               const shouldDelete = window.confirm("Confirm to Delete");
               if (shouldDelete) {
@@ -327,17 +327,21 @@ const VerifyWord = () => {
                 });
               }
             }}
-            src={deleteImg}
-          ></Btn>
-
-          <Btn
-            onClick={() => navigate("/author/unverifiedwords")}
-            src={backImg}
-          ></Btn>
-
-          <Btn
-            color="green"
+          >
+            <Btn color="red" src={deleteImg}></Btn>
+          </BtnCon>
+          <BtnCon onClick={() => navigate("/author/unverifiedwords")}>
+            <Btn src={backImg}></Btn>
+          </BtnCon>
+          <BtnCon
             onClick={async () => {
+              if (shouldShow === "Word") {
+                setShouldShow("Example");
+                return;
+              } else if (shouldShow === "Example") {
+                setShouldShow("Defination");
+                return;
+              }
               if (
                 (word.balochi_word.trim().length === 0 &&
                   word.brahoi_word.trim().length === 0) ||
@@ -346,7 +350,7 @@ const VerifyWord = () => {
                 word.roman_balochi_word.trim().length === 0
               ) {
                 setLocalMessage(
-                  "You must provide every word in every given language..."
+                  "You must provide every word in every given language...\n Don't need to provide example or defination"
                 );
               } else {
                 const shouldSave = window.confirm("Confirm to Save");
@@ -397,8 +401,9 @@ const VerifyWord = () => {
                 }
               }
             }}
-            src={saveImg}
-          ></Btn>
+          >
+            <Btn color="green" src={saveImg}></Btn>
+          </BtnCon>
         </StyledBtnContainer>
         <StyledMessage>{localMessage}</StyledMessage>
       </StyledContainer>

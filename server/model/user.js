@@ -1,9 +1,7 @@
-const db = require("../config/db_connection");
+const { query } = require("../config/db_connection");
 
 const loginAuthor = async (name) => {
-  const result = await db.query(`SELECT * FROM authors WHERE name = ?;`, [
-    name,
-  ]);
+  const result = await query(`SELECT * FROM authors WHERE name = ?;`, [name]);
   return result;
 };
 

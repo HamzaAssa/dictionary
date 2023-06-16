@@ -1,6 +1,6 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
-// const cors = require("cors");
+const cors = require("cors");
 const addroute = require("./routes/add");
 const unverifiedRoute = require("./routes/unverified");
 const userRoute = require("./routes/user");
@@ -9,7 +9,7 @@ const verfiedRoute = require("./routes/verified");
 require("dotenv").config();
 const app = express();
 
-// app.use(cors());
+app.use(cors());
 // app.use(
 //   cors({
 //     origin: process.env.CORS_URL,
