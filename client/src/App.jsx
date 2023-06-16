@@ -18,6 +18,8 @@ function App() {
           <Routes>
             <Route path="/" exact element={<Home />} />
             <Route path="/addword" exact element={<Addword />} />
+            {/* <Route path="/add-definations" exact element={<AddDefination />} />
+            <Route path="/add-examples" exact element={<AddExample />} /> */}
             <Route path="/author/login" exact element={<Login />} />
             <Route
               path="/author/unverifiedwords"

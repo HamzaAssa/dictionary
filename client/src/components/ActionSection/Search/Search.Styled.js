@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
 export const StyledSelect = styled.select`
-  margin-left: 10px;
-  width: 150px;
+  max-width: 110px;
   height: 25px;
   font-size: 15px;
-  border: 2px solid gray;
+  border: 1px solid gray;
   border-radius: 10px;
 `;
 
@@ -13,7 +12,7 @@ export const StyledInput = styled.input`
   width: 270px;
   align-self: start;
   height: 35px;
-  border: 2px solid lightblue;
+  border: 1px solid grey;
   border-radius: 20px;
   font-size: 18px;
   padding-right: 10px;
@@ -22,7 +21,7 @@ export const StyledInput = styled.input`
   &:focus {
     width: 270px;
     height: 35px;
-    border: 2px solid #6f8df7;
+    border: 2px solid grey;
     outline: none;
   }
   margin-left: 15px;
@@ -75,5 +74,9 @@ export const StyledCon = styled.div`
 
 export const StyledContainer = styled.div`
   margin: 0 auto;
-  margin-top: ${({ margin }) => margin}; ;
+  padding: 10px 10px;
+  border-radius: 10px;
+  max-width: 500px;
+  box-shadow: 0px 0px 10px 5px #c4c4c4;
+  margin-top: ${({ margin }) => margin};
 `;

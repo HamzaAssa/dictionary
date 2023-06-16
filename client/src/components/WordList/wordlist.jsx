@@ -1,18 +1,22 @@
 import { useEffect, useState } from "react";
-import { getAllWords } from "../../api";
+import { getAllVerifiedData } from "../../api";
 import { StyledContainer, StyledWord, StyledWordCon } from "./Styled.WordList";
 import { useNavigate } from "react-router-dom";
 import Search from "../ActionSection/Search/Search";
 const WordList = () => {
   const navigate = useNavigate();
-  const [wordList, setWordList] = useState([]);
+  const [verifiedWords, setVerifiedWords] = useState([]);
   const [forSearching, setForSearching] = useState([]);
+  const [verifieExamples, setVerifiedExamples] = useState([]);
+  const [verifiedDefinations, setVerifiedDefinations] = useState([]);
   const [language, setLanguage] = useState(["balochi_word", "rtl"]);
 
   useEffect(() => {
-    const result = getAllWords().then((data) => {
-      setWordList(data);
-      setForSearching(data);
+    const result = getAllVerifiedData().then((data) => {
+      setVerifiedWords(data.words);
+      setForSearching(data.words);
+      setVerifiedExamples(data.examples);
+      setVerifiedDefinations(data.definations);
     });
   }, []);
 
@@ -24,7 +28,7 @@ const WordList = () => {
     let searchKey = e.target.value.trimStart().toLowerCase();
 
     let matchedWords = [];
-    setWordList([]);
+    setVerifiedWords([]);
     forSearching.forEach((word) => {
       let searchparam = word[language].toLowerCase();
       if (searchparam.startsWith(searchKey, 0)) {
@@ -32,7 +36,7 @@ const WordList = () => {
       }
     });
 
-    setWordList(matchedWords);
+    setVerifiedWords(matchedWords);
   };
 
   const onLnagSelect = (e) => {
@@ -59,7 +63,18 @@ const WordList = () => {
   };
 
   const handleClick = (word) => {
-    navigate("/search/word", { state: { word } });
+    let example = {};
+    let defination = {};
+    for (let i = 0; i < verifiedWords.length; i++) {
+      if (word.wordId === verifieExamples[i].word_id) {
+        example = verifieExamples[i];
+      }
+      if (word.wordId === verifiedDefinations[i].word_id) {
+        defination = verifiedDefinations[i];
+      }
+    }
+
+    navigate("/search/word", { state: { word, example, defination } });
   };
 
   return (
@@ -68,14 +83,14 @@ const WordList = () => {
         position={language[1]}
         search={search}
         handleChange={onChange}
-        margin="130px"
+        margin="100px"
         handleLangChange={onLnagSelect}
       />
       <StyledContainer>
-        {wordList.length === 0 ? (
+        {verifiedWords.length === 0 ? (
           <h3>No Words</h3>
         ) : (
-          wordList.map((word) => {
+          verifiedWords.map((word) => {
             return (
               <StyledWordCon
                 height="55px"

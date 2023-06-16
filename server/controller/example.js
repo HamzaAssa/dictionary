@@ -1,8 +1,8 @@
 const fs = require("fs");
-const { dbGetAllWords } = require("../model/word");
-const getAllWords = async (req, res) => {
+const { dbGetAnUnverifiedExample } = require("../model/example");
+const getAnUnverifiedExample = async (req, res) => {
   try {
-    const result = await dbGetAllWords();
+    const result = await dbGetAnUnverifiedExample(req.wordId);
     res.json(result);
   } catch (err) {
     fs.appendFile("log.txt", `${err}`, () => {});
@@ -14,5 +14,5 @@ const getAllWords = async (req, res) => {
 };
 
 module.exports = {
-  getAllWords,
+  getAnUnverifiedExample,
 };

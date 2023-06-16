@@ -65,8 +65,12 @@ export const StyledLabel = styled.p`
 
 export const Btn = styled.img`
   margin-top: 15px;
-  // border-radius: 50px;
   cursor: pointer;
+  // border-radius: 50px;
+  // box-shadow: 0px 0px 10px 5px #c4c4c4;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
 `;
 
 export const StyledBtnContainer = styled.div`

@@ -1,9 +1,10 @@
 const express = require("express");
+const bcrypt = require("bcrypt");
 // const cors = require("cors");
 const addroute = require("./routes/add");
-const WordverifyRoute = require("./routes/verify");
+const unverifiedRoute = require("./routes/unverified");
 const userRoute = require("./routes/user");
-const wordRoute = require("./routes/words");
+const verfiedRoute = require("./routes/verified");
 
 require("dotenv").config();
 const app = express();
@@ -18,18 +19,22 @@ const app = express();
 
 app.use(express.static("public/build"));
 
+app.get("/", async (req, res) => {
+  res.sendFile("/index.html");
+});
 app.use(express.json());
-app.use("/words", wordRoute);
+app.use("/verfied", verfiedRoute);
 app.use("/add", addroute);
-app.use("/unverifiedWords", WordverifyRoute);
+app.use("/unverified", unverifiedRoute);
 app.use("/author", userRoute);
 
 app.all("*", function (req, res) {
-  res.redirect("https://openbalochidectionary.herokuapp.com/");
+  return res.redirect("/");
 });
 
-const PORT = process.env.PORT || 9000;
+// const PORT = process.env.PORT || 9000;
+const PORT = 7060;
 
-app.listen(PORT, () =>
-  console.log(`Server is running on http://localhost:${PORT}`)
-);
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});

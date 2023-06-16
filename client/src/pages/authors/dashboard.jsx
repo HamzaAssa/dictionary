@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
-import { getunverifiedWords } from "../../api";
+import { getUnverifiedData } from "../../api";
 import Search from "../../components/ActionSection/Search/Search";
 import {
   StyledMessage,
@@ -11,11 +11,12 @@ import {
 } from "../../components/WordList/Styled.WordList";
 import { AddMessageContext } from "../../state/AddMessageContext";
 import { StyledNoti } from "./Styled.Dashboard";
-// import Balochi from "../../components/ActionSection/Add/Fields/Balochi";
 
 const Dashboard = () => {
   const [forSearching, setForSearching] = useState([]);
   const [unverifiedWords, setUnverifiedWords] = useState([]);
+  const [unverifiedExamples, setUnverifiedExamples] = useState([]);
+  const [unverifiedDefinations, setUnverifiedDefinations] = useState([]);
   const [language, setLanguage] = useState(["balochi_word", "rtl"]);
   const [message, setMessage] = useContext(AddMessageContext);
 
@@ -35,10 +36,22 @@ const Dashboard = () => {
         let sentToken = JSON.parse(
           localStorage.getItem("balochi-dectioanry-auth")
         )?.token;
-        getunverifiedWords(sentToken).then((data) => {
-          setUnverifiedWords(data);
-          setForSearching(data);
+        getUnverifiedData(sentToken).then((data) => {
+          setUnverifiedWords(data.words);
+          setForSearching(data.words);
+          setUnverifiedExamples(data.examples);
+          setUnverifiedDefinations(data.definations);
         });
+        // getunverifiedWords(sentToken).then((data) => {
+        //   setUnverifiedWords(data);
+        //   setForSearching(data);
+        // });
+        // getUnverifiedDefinations(sentToken).then(data => {
+        //   setUnverifiedDefinations(data);
+        // })
+        // getUnverifiedExamples(sentToken).then(data => {
+        //   setUnverifiedExamples(data);
+        // })
       }
     }
   }, []);
@@ -62,7 +75,20 @@ const Dashboard = () => {
   };
 
   const handleClick = (word) => {
-    navigate("/author/unverifiedwords/verify", { state: { word } });
+    let example = {};
+    let defination = {};
+    for (let i = 0; i < unverifiedWords.length; i++) {
+      if (word.wordId === unverifiedExamples[i].word_id) {
+        example = unverifiedExamples[i];
+      }
+      if (word.wordId === unverifiedDefinations[i].word_id) {
+        defination = unverifiedDefinations[i];
+      }
+    }
+
+    navigate("/author/unverifiedwords/verify", {
+      state: { word, example, defination },
+    });
   };
 
   const onLnagSelect = (e) => {

@@ -1,8 +1,18 @@
 const { addWord } = require("../model/word");
+const { dbAddAnUnverifiedExample } = require("../model/example");
+const { dbAddAnUnverifiedDefination } = require("../model/defination");
 const { addLog } = require("../model/log");
-const add = async (req, res) => {
+const addUnverifiedData = async (req, res) => {
   try {
     const result = await addWord(req.body);
+    const addedExample = await dbAddAnUnverifiedExample(
+      req.body,
+      result.insertId
+    );
+    const addedDefination = await dbAddAnUnverifiedDefination(
+      req.body,
+      result.insertId
+    );
     const log = await addLog({
       userId: "Anonymous",
       wordId: result.insertId,
@@ -22,5 +32,5 @@ const add = async (req, res) => {
 };
 
 module.exports = {
-  add,
+  addUnverifiedData,
 };
