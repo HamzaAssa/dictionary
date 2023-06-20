@@ -134,11 +134,12 @@ const Dashboard = () => {
           unverifiedWords.map((word) => {
             return (
               <StyledWordCon
-                height="55px"
+                height={language[1] === "rtl" ? "70px" : "55px"}
                 key={word.wordId}
                 onClick={() => handleClick(word)}
               >
                 <StyledWord
+                  className={language[1] + "-font"}
                   position={language[1]}
                   readOnly
                   type="text"

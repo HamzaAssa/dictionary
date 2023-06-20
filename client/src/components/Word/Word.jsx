@@ -59,7 +59,7 @@ const Word = () => {
         <LineBreak style={{ margin: "10px 0px" }} />
         <StyledTitle>{shouldShow}</StyledTitle>
         <div style={{ display: shouldShow === "Word" ? "" : "none" }}>
-          <StyledWordCon height="85px">
+          <StyledWordCon height="100px">
             <StyledLabel>
               <span style={{ padding: "5px 0px" }}>Balochi</span>
             </StyledLabel>
@@ -71,7 +71,7 @@ const Word = () => {
               value={word.balochi_word}
             ></StyledWord>
           </StyledWordCon>
-          <StyledWordCon height="85px">
+          <StyledWordCon height="100px">
             <StyledLabel>
               <span style={{ padding: "5px 0px" }}>Brahoi</span>
             </StyledLabel>
@@ -83,7 +83,7 @@ const Word = () => {
               value={word.brahoi_word}
             ></StyledWord>
           </StyledWordCon>
-          <StyledWordCon height="85px">
+          <StyledWordCon height="100px">
             <StyledLabel>
               <span style={{ padding: "5px 0px" }}>Urdu</span>
             </StyledLabel>
@@ -122,7 +122,7 @@ const Word = () => {
           </StyledWordCon>
         </div>
         <div style={{ display: shouldShow === "Example" ? "" : "none" }}>
-          <StyledWordCon height="85px">
+          <StyledWordCon height="100px">
             <StyledLabel>
               <span style={{ padding: "5px 0px" }}>Balochi</span>
             </StyledLabel>
@@ -133,7 +133,7 @@ const Word = () => {
               value={example.balochi_example}
             ></StyledWord>
           </StyledWordCon>
-          <StyledWordCon height="85px">
+          <StyledWordCon height="100px">
             <StyledLabel>
               <span style={{ padding: "5px 0px" }}>Brahoi</span>
             </StyledLabel>
@@ -145,7 +145,7 @@ const Word = () => {
               value={example.brahoi_example}
             ></StyledWord>
           </StyledWordCon>
-          <StyledWordCon height="85px">
+          <StyledWordCon height="100px">
             <StyledLabel>
               <span style={{ padding: "5px 0px" }}>Urdu</span>
             </StyledLabel>
@@ -187,7 +187,7 @@ const Word = () => {
 
         {/* Definations */}
         <div style={{ display: shouldShow === "Defination" ? "" : "none" }}>
-          <StyledWordCon height="85px">
+          <StyledWordCon height="100px">
             <StyledLabel>
               <span style={{ padding: "5px 0px" }}>Balochi</span>
             </StyledLabel>
@@ -199,7 +199,7 @@ const Word = () => {
               value={defination.balochi_defination}
             ></StyledWord>
           </StyledWordCon>
-          <StyledWordCon height="85px">
+          <StyledWordCon height="100px">
             <StyledLabel>
               <span style={{ padding: "5px 0px" }}>Brahoi</span>
             </StyledLabel>
@@ -211,7 +211,7 @@ const Word = () => {
               value={defination.brahoi_defination}
             ></StyledWord>
           </StyledWordCon>
-          <StyledWordCon height="85px">
+          <StyledWordCon height="100px">
             <StyledLabel>
               <span style={{ padding: "5px 0px" }}>Urdu</span>
             </StyledLabel>

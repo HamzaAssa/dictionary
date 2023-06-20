@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <StyledFooter>
       <StyledLeft>
-        <StyledText>openbalochidectionary@gmail.com</StyledText>
+        <StyledText>labz-balad@rasaank.com</StyledText>
         <StyledText> - An open source dectionay</StyledText>
       </StyledLeft>
       <StyledRight>

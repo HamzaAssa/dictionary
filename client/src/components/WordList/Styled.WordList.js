@@ -39,13 +39,14 @@ export const StyledWordCon = styled.div`
 `;
 
 export const StyledWord = styled.input`
+  text-align: center;
   width: 280px;
   margin-right: 5px;
   border: none;
   outline: none;
   font-size: 22px;
   direction: ${({ position }) => position};
-  font-weight: bold;
+  font-weight: 400;
   margin-bottom: 10px;
   cursor: pointer;
 `;
